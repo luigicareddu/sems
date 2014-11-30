@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ac_type: MyString
+  name: MyString
+  status: 1
+
+two:
+  ac_type: MyString
+  name: MyString
+  status: 1
