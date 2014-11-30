@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plane:</strong>
+  <%= @log.plane_id %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @log.text %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @log.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @log.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>
