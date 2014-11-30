@@ -1,10 +1,10 @@
-<%= form_for(@log) do |f| %>
-  <% if @log.errors.any? %>
+<%= form_for(@note) do |f| %>
+  <% if @note.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
+      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
 
       <ul>
-      <% @log.errors.full_messages.each do |message| %>
+      <% @note.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,8 +20,8 @@
     <%= f.text_area :text %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.label :state %><br>
+    <%= f.select(:state, Note.states.keys.map {|state| [state.titleize,state]}) %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>

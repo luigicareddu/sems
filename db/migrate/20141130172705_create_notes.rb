@@ -1,9 +1,9 @@
-class CreateLogs < ActiveRecord::Migration
+class CreateNotes < ActiveRecord::Migration
   def change
-    create_table :logs do |t|
+    create_table :notes do |t|
       t.integer :plane_id
       t.text :text
-      t.integer :status
+      t.integer :state
       t.integer :user_id
 
       t.timestamps

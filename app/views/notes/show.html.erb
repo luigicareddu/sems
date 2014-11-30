@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plane:</strong>
+  <%= @note.plane_id %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @note.text %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @note.state %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @note.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>

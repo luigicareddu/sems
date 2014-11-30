@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :logs
+  resources :notes
 
   resources :planes
 

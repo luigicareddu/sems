@@ -3,11 +3,11 @@
 one:
   plane_id: 1
   text: MyText
-  status: 1
+  state: 1
   user_id: 1
 
 two:
   plane_id: 1
   text: MyText
-  status: 1
+  state: 1
   user_id: 1
