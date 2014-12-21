@@ -20,8 +20,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.number_field :status %>
+    <%= f.label :state %><br>
+    <%= f.select(:state, Plane.states.keys.map {|state| [state.titleize,state]}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

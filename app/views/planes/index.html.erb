@@ -5,7 +5,7 @@
     <tr>
       <th>Ac type</th>
       <th>Name</th>
-      <th>Status</th>
+      <th>State</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= plane.ac_type %></td>
         <td><%= plane.name %></td>
-        <td><%= plane.status %></td>
+        <td><%= plane.state %></td>
         <td><%= link_to 'Show', plane %></td>
         <td><%= link_to 'Edit', edit_plane_path(plane) %></td>
         <td><%= link_to 'Destroy', plane, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130172705) do
+ActiveRecord::Schema.define(version: 20141221164758) do
 
   create_table "logs", force: true do |t|
     t.integer  "plane_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141130172705) do
   create_table "planes", force: true do |t|
     t.string   "ac_type"
     t.string   "name"
-    t.integer  "status"
+    t.integer  "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
