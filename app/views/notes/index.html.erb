@@ -1,6 +1,6 @@
 <h1>Listing notes</h1>
 
-<table>
+<table class='table table-hover table-condensed'>
   <thead>
     <tr>
       <th>Plane</th>
@@ -18,9 +18,9 @@
         <td><%= note.text %></td>
         <td><%= note.state %></td>
         <td><%= note.user_id %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', note , class: 'btn btn-xs btn-default' %></td>
+        <td><%= link_to 'Edit', edit_note_path(note), class: 'btn btn-xs btn-default' %></td>
+        <td><%= link_to 'Destroy', note, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to 'New Note', new_note_path, class: 'btn btn-primary' %>
