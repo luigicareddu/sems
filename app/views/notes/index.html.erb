@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Plane</th>
-      <th>Text</th>
+      <th>Title</th>
       <th>State</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -15,10 +15,10 @@
     <% @notes.each do |note| %>
       <tr>
         <td><%= note.plane.name %></td>
-        <td><%= note.text %></td>
+        <td><%= note.title %></td>
         <td><%= note.state %></td>
         <td><%= note.user_id %></td>
-        <td><%= link_to 'Show', note , class: 'btn btn-xs btn-default' %></td>
+        <td><%= link_to 'Show', note, class: 'btn btn-xs btn-default' %></td>
         <td><%= link_to 'Edit', edit_note_path(note), class: 'btn btn-xs btn-default' %></td>
         <td><%= link_to 'Destroy', note, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

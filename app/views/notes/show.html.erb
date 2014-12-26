@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @note.text %>
+  <strong>Title:</strong>
+  <%= @note.title %>
 </p>
 
 <p>
@@ -19,6 +19,23 @@
   <strong>User:</strong>
   <%= @note.user_id %>
 </p>
+
+<% @note.items.each do |item| %>
+  <p>
+    <%= item.text %>
+  </p>
+<% end %>
+
+<h2>Add an item to this note:</h2>
+<%= form_for([@note, @note.items.build]) do |f| %>
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
