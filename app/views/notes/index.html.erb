@@ -1,4 +1,4 @@
-<h1>Listing notes</h1>
+<h1>Notes</h1>
 
 <table class='table table-hover table-condensed'>
   <thead>
@@ -7,7 +7,8 @@
       <th>Title</th>
       <th>State</th>
       <th>User</th>
-      <th colspan="3"></th>
+      <th>Created</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -16,9 +17,17 @@
       <tr>
         <td><%= note.plane.name %></td>
         <td><%= note.title %></td>
-        <td><%= note.state %></td>
+        <td>
+          <% if note.state == 'open' %>
+            <%= link_to 'OPEN', close_note_path(note), class: 'label label-default' %>
+          <% else %>
+            <span class='label label-success'><%= note.state.upcase%></span>
+          <% end %>
+        </td>
         <td><%= note.user_id %></td>
-        <td><%= link_to 'Show', note, class: 'btn btn-xs btn-default' %></td>
+        <td><%= note.created_at.strftime('%d %b %H:%M').upcase %></td>
+        <td><%= link_to 'Append', new_note_item_path(note), class: 'btn btn-xs btn-primary' if note.state == 'open' %></td>
+        <td><%= link_to 'Details', note, class: 'btn btn-xs btn-default' %></td>
         <td><%= link_to 'Edit', edit_note_path(note), class: 'btn btn-xs btn-default' %></td>
         <td><%= link_to 'Destroy', note, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

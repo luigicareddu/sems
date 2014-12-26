@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :close]
 
   # GET /notes
   # GET /notes.json
@@ -58,6 +58,14 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def close
+    if @note.update(state: :closed)
+      redirect_to notes_path, notice: 'Note was successfully closed.'
+    else
+      render :edit
     end
   end
 
