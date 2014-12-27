@@ -1,0 +1,20 @@
+<p>
+  <strong>email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>role:</strong>
+  <%= @user.role %>
+</p>
+<p>
+  <strong>last sign in:</strong>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <strong>last sign in IP:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

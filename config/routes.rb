@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
+  #added by Devise
+  devise_for :users
+
   resources :notes do
     resources :items
+  end
+
+  # allow access to users management
+  scope '/admin' do
+    resources :users
   end
 
   resources :planes
