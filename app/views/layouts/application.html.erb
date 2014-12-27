@@ -23,9 +23,17 @@
           <ul class="nav navbar-nav">
             <li class="<%= 'active' if params[:controller] == 'notes' %>"><%= link_to 'Notes', notes_path %></li>
             <li class="<%= 'active' if params[:controller] == 'planes' %>"><%= link_to 'Planes', planes_path %></li>
-            <li class="<%= 'active' if params[:controller] == 'users' %>"><%= link_to 'Users', users_path %></li>
+            <% if current_user && current_user.admin? %>
+              <li class="<%= 'active' if params[:controller] == 'users' %>"><%= link_to 'Users', users_path %></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.name, user_path(current_user.id) %></li>
+              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete%></li>
+            <% else %>
+              <li><%= link_to 'Log in', new_user_session_path %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -40,7 +48,7 @@
         </div>
       <% end %>
       <% if flash[:alert] %>
-        <div class="alert alert-warning alert-dismissible" role="alert">
+        <div class="alert alert-danger alert-dismissible" role="alert">
          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <%= flash[:alert] %>
         </div>
