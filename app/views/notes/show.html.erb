@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @note.title %></h2>
-<h3><small><%= @note.plane.name %>. Status <%= @note.state.upcase %>. Created on <%= @note.created_at %></small></h3>
+<h3>
+<%= @note.title %>
+<p><small><%= @note.plane.name %>. Status <%= @note.state.upcase %>. Created on <%= @note.created_at %></small></p>
+</h3>
 
 <table class='table table-hover table-condensed'>
   <thead>
