@@ -23,11 +23,7 @@
     <%= f.label :state %><br>
     <%= f.select(:state, Note.states.keys.map {|state| [state.titleize,state]}) %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
+  <div class="action">
     <%= f.submit %>
   </div>
 <% end %>

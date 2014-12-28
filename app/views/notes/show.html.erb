@@ -1,5 +1,5 @@
 <h3>
-<%= @note.title %>
+<%= @note.title.capitalize %>
 <p><small><%= @note.plane.name %>. Status <%= @note.state.upcase %>. ID# <%= @note.id %>. Created on <%= @note.created_at.strftime('%d %b %H:%M') %> by <%= @note.user.name.titleize %></small></p>
 </h3>
 
@@ -7,7 +7,8 @@
   <thead>
     <tr>
       <th>Text</th>
-      <th>Created</th>
+      <th>Updated</th>
+      <th>User</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -16,14 +17,15 @@
     <% @note.items.each do |item| %>
       <tr>
         <td><%= item.text %></td>
-        <td><%= item.created_at.strftime('%d %b %H:%M') %></td>
-        <td><%= link_to 'Edit', edit_note_item_path(@note, item), class: 'btn btn-xs btn-default'  %></td>
-        <td><%= link_to 'Destroy', [@note, item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'  %></td>
+        <td><%= item.updated_at.strftime('%d %b %H:%M') %></td>
+        <td><%= item.user.name.titleize %></td>
+        <td><%= link_to 'Edit', edit_note_item_path(@note, item), class: 'btn btn-xs btn-default' if (item.user == current_user || current_user.admin?) %></td>
+        <td><%= link_to 'Destroy', [@note, item], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' if (item.user == current_user || current_user.admin?)%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add Item', new_note_item_path(@note), class: 'btn btn-primary' %>
+<%= link_to 'Add Item', new_note_item_path(@note), class: 'btn btn-primary' if @note.open? %>
 <%= link_to 'Edit Note', edit_note_path(@note), class: 'btn btn-default' %>
 <%= link_to 'Back', notes_path, class: 'btn btn-default' %>

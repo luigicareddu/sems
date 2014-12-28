@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>State</th>
       <th>User</th>
-      <th>Created</th>
+      <th>Updated</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
           <% end %>
         </td>
         <td><%= note.user.name.titleize %></td>
-        <td><%= note.created_at.strftime('%d %b %H:%M').upcase %></td>
+        <td><%= note.updated_at.strftime('%d %b %H:%M').upcase %></td>
         <td><%= link_to 'Append', new_note_item_path(note), class: 'btn btn-xs btn-primary' if note.state == 'open' %></td>
         <td><%= link_to 'Details', note, class: 'btn btn-xs btn-default' %></td>
         <td><%= link_to 'Edit', edit_note_path(note), class: 'btn btn-xs btn-default' %></td>

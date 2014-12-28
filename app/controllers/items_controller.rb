@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_note
+  before_action :authenticate_user!
+  before_action :admin_only, only: [:update, :destroy]
+
 
   # GET /items/new
   def new
@@ -14,7 +17,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = @note.items.create(item_params)
+    @item = @note.items.create(item_params.merge(user_id: current_user.id))
     redirect_to note_path(@note)
   end
 
@@ -45,8 +48,14 @@ class ItemsController < ApplicationController
       @note = Note.find(params[:note_id])
     end
 
+    def admin_only
+      unless current_user && (current_user.admin? || current_user == @item.user)
+        redirect_to root_path || :back, :alert => "Access denied."
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:text, :user_id, :note_id)
+      params.require(:item).permit(:text, :note_id)
     end
 end

@@ -1,20 +1,14 @@
 <h3><%= @user.name.titleize %></h3>
-  <strong>email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>role:</strong>
-  <%= @user.role.upcase %>
-</p>
-<p>
-  <strong>last sign in:</strong>
-  <%= @user.last_sign_in_at %>
-</p>
+<div class = 'row'>
+<div class = 'col-md-4'>
+<ul class='list-group'>
+	<li class = 'list-group-item'><%= @user.email %></li>
+	<li class = 'list-group-item'><span class='label label-default'><%= @user.role.upcase %></span></li>
+	<li class = 'list-group-item'>last sign in: <%= @user.last_sign_in_at %></li>
+	<li class = 'list-group-item'>last sign in IP: <%= @user.last_sign_in_ip %></li>
+</ul>
+</div>
+</div>
 
-<p>
-  <strong>last sign in IP:</strong>
-  <%= @user.last_sign_in_ip %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default'   %> |
-<%= link_to 'Back', users_path, class: 'btn btn-default'   %>
+<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %>
+<%= link_to 'Back', users_path, class: 'btn btn-default' %>
