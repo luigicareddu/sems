@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :admin_only
+  before_action :admin_only, except: [:show, :update_password, :change_password]
 
   def index
   	@users = User.all
@@ -45,6 +45,21 @@ class UsersController < ApplicationController
   	else
   		render action: 'edit'
   	end
+  end
+
+  def change_password
+    @user = User.find(current_user.id)    
+  end
+
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path
+    else
+      render "update_password"
+    end
   end
 
   # DELETE /users/1

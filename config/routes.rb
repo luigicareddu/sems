@@ -3,15 +3,21 @@ Rails.application.routes.draw do
   #added by Devise
   devise_for :users
 
-  resources :notes do
-    resources :items
-  end
-
   # allow access to users management
   scope '/admin' do
     resources :users
   end
+  get 'users/change_password', as: :change_password
+  patch 'users/update_password'
 
+
+  #note and items
+  resources :notes do
+    resources :items
+  end
+  get 'notes/:id/close' => 'notes#close', as: :close_note
+
+  #planes
   resources :planes
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,7 +28,6 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  get 'notes/:id/close' => 'notes#close', as: :close_note
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
