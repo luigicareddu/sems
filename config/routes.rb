@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :users
   end
   get 'users/change_password', as: :change_password
-  patch 'users/update_password'
+  patch 'users/update_password', as: :update_password
+  get 'users/send_password/:id' => 'users#send_password', as: :send_password
 
 
   #note and items

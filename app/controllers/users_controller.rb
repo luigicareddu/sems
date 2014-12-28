@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :send_password]
+  before_action :authenticate_user!
   before_action :admin_only, except: [:show, :update_password, :change_password]
 
   def index
@@ -56,9 +57,17 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       # Sign in the user by passing validation in case their password changed
       sign_in @user, :bypass => true
-      redirect_to root_path
+      redirect_to root_path, notice: 'Password was successfully changed'
     else
-      render "update_password"
+      render "change_password"
+    end
+  end
+
+  def send_password
+    if @user.send_reset_password_instructions
+      redirect_to users_path, notice: 'Password reset instructions sent to ' + @user.name
+    else
+      redirect_to users_path, alert: 'Can\'t send reset instructions'
     end
   end
 
