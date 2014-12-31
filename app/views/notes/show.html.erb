@@ -27,5 +27,4 @@
 </table>
 
 <%= link_to 'Add Item', new_note_item_path(@note), class: 'btn btn-primary' if @note.open? %>
-<%= link_to 'Edit Note', edit_note_path(@note), class: 'btn btn-default' %>
 <%= link_to 'Back', notes_path, class: 'btn btn-default' %>
