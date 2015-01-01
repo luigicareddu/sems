@@ -1,29 +1,27 @@
 <h1>Planes</h1>
 
-<table class='table table-hover table-condensed'>
+<table class='table table-hover table-condensed ' id = 'planes'>
   <thead>
     <tr>
       <th>a/c type</th>
       <th>Name</th>
       <th>State</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @planes.each do |plane| %>
-      <tr id=<%= plane.id %>>
-        <td><%= plane.ac_type.upcase %></td>
-        <td><%= plane.name.upcase %></td>
-        <td><%= plane.state %></td>
-        <td><%= link_to 'Show', plane, class: 'btn btn-xs btn-default' %></td>
-        <td><%= link_to 'Edit', edit_plane_path(plane), class: 'btn btn-xs btn-default' %></td>
-        <td><%= link_to 'Destroy', plane, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>
-      </tr>
-    <% end %>
+    <%= render @planes %>
   </tbody>
 </table>
 
-<br>
+<%= link_to 'New Plane', new_plane_path, remote: true, class: 'btn btn-primary' %>
 
-<%= link_to 'New Plane', new_plane_path, class: 'btn btn-primary' %>
+<div class='row'>
+  <div class='collapse col-md-4' >
+    <hr></hr>
+      <div id ='planes-form'>
+      </div>
+    <hr></hr>
+  </div>
+</div>

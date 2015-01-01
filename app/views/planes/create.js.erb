@@ -1,0 +1,4 @@
+$('.collapse').collapse('hide');
+$('#new_plane')[0].reset();
+$("<%= escape_javascript(render @plane) %>").appendTo("#planes");
+$('#<%= @plane.id %>').effect('highlight');

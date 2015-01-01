@@ -1,0 +1,7 @@
+<tr <%= 'id=' + plane.id.to_s %> >
+<td><%= plane.ac_type.upcase %></td>
+<td><%= plane.name.upcase %></td>
+<td><%= plane.state %></td>
+<td><%= link_to 'Edit', edit_plane_path(plane), class: 'btn btn-xs btn-default', remote: true %></td>
+<td><%= link_to 'Destroy', plane, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>
+</tr>

@@ -1,0 +1,3 @@
+$('.collapse').collapse('hide');
+$('#<%= @plane.id %>').replaceWith('<%= j (render @plane) %>');
+$('#<%= @plane.id %>').effect('highlight');

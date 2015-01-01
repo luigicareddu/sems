@@ -7,11 +7,7 @@ class PlanesController < ApplicationController
   # GET /planes.json
   def index
     @planes = Plane.all
-  end
-
-  # GET /planes/1
-  # GET /planes/1.json
-  def show
+    @plane = Plane.new
   end
 
   # GET /planes/new
@@ -30,11 +26,11 @@ class PlanesController < ApplicationController
 
     respond_to do |format|
       if @plane.save
-        format.html { redirect_to @plane, notice: 'Plane was successfully created.' }
-        format.json { render :show, status: :created, location: @plane }
+        format.html { redirect_to planes_path, notice: 'Plane was successfully created.' }
+        format.js {}
       else
         format.html { render :new }
-        format.json { render json: @plane.errors, status: :unprocessable_entity }
+        format.js { render :new}
       end
     end
   end
@@ -44,11 +40,11 @@ class PlanesController < ApplicationController
   def update
     respond_to do |format|
       if @plane.update(plane_params)
-        format.html { redirect_to @plane, notice: 'Plane was successfully updated.' }
-        format.json { render :show, status: :ok, location: @plane }
+        format.html { redirect_to planes_path, notice: 'Plane was successfully updated.' }
+        format.js {}
       else
         format.html { render :edit }
-        format.json { render json: @plane.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
