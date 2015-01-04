@@ -1,5 +1,11 @@
 <h1>Notes</h1>
 
+<%= bootstrap_form_tag method: 'get', layout: :inline do |f| %>
+  <%= f.text_field(:search, hide_label: true, value: params[:search]) %>
+  <%= f.submit("Search") %>
+  <%= link_to 'Only Open', notes_path(only_open: true), class: 'btn btn-primary' %>
+<% end %>
+
 <table class='table table-hover table-condensed'>
   <thead>
     <tr>

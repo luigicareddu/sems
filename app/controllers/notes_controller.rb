@@ -5,7 +5,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all.order(updated_at: :desc)
+    @notes = Note.search(params[:search]).order(updated_at: :desc)
+    @notes = @notes.open if params[:only_open]
+
   end
 
   # GET /notes/1
