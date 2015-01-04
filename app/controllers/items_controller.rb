@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, only: [:update, :destroy]
 
+  def index
+    @items = @note.items
+  end
 
   # GET /items/new
   def new
@@ -49,6 +52,7 @@ class ItemsController < ApplicationController
     end
 
     def admin_only
+      # check if the current user is an admin OR the item belongs to the currentu user
       unless current_user && (current_user.admin? || current_user == @item.user)
         redirect_to root_path || :back, :alert => "Access denied."
       end
