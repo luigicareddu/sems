@@ -20,8 +20,11 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = @note.items.create(item_params.merge(user_id: current_user.id))
-    redirect_to note_path(@note)
+    if @note.items.create(item_params.merge(user_id: current_user.id))
+      redirect_to note_path(@note)
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /items/1
