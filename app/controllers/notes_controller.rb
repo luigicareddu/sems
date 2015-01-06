@@ -65,10 +65,12 @@ class NotesController < ApplicationController
   end
 
   def close
-    if @note.update(state: :closed)
-      redirect_to notes_path, notice: 'Note was successfully closed.'
-    else
-      render :edit
+    respond_to do |format|
+      if @note.update(state: :closed)
+        format.html { redirect_to notes_path, notice: 'Note was successfully closed.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
